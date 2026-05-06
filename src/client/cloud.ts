@@ -14,8 +14,8 @@ import type {
   IntegrationListResponse,
   OrgSettingsDTO,
   TeamResponse,
-} from "../types/cloud";
-import { request, type RequestOptions } from "./base";
+} from "../types/cloud.js";
+import { request, type RequestOptions } from "./base.js";
 
 // --- Auth ----------------------------------------------------------------
 

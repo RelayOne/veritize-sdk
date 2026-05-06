@@ -10,9 +10,9 @@ import type {
   VerifyResponse,
   StatusResponse,
   ScanListResponse,
-} from "../types/api";
-import type { GetScansParams } from "../types/cloud";
-import { request, type RequestOptions } from "./base";
+} from "../types/api.js";
+import type { GetScansParams } from "../types/cloud.js";
+import { request, type RequestOptions } from "./base.js";
 
 /** POST /v1/scan. */
 export function postScan(

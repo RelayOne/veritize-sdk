@@ -6,7 +6,7 @@
 // The client is React-agnostic and zero-runtime-dep — only native
 // `fetch`, `URLSearchParams`, and `Response` are used.
 
-import type { ErrorResponse } from "../types/api";
+import type { ErrorResponse } from "../types/api.js";
 
 export interface RequestOptions {
   /** Optional absolute base URL. Empty / undefined means same-origin. */

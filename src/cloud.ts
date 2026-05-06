@@ -4,5 +4,5 @@
 // `import { getAdminCustomers, IntegrationDTO } from "@verity/client/cloud"`
 // without a second import line.
 
-export * from "./types/cloud";
-export * from "./client/cloud";
+export * from "./types/cloud.js";
+export * from "./client/cloud.js";

@@ -8,7 +8,7 @@
 //   local:     same-origin, no auth (the binary serves the SPA).
 //   extension: bearer from chrome.storage.local + resolved base URL.
 
-import type { RequestOptions } from "../client/base";
+import type { RequestOptions } from "../client/base.js";
 
 /** Cloud: session cookie + optional bearer + optional active-org header. */
 export interface CookieAuth {
