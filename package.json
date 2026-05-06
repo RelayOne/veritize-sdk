@@ -1,0 +1,56 @@
+{
+  "name": "@veritize/client",
+  "version": "0.2.0",
+  "description": "TypeScript HTTP client + DTOs for the Veritize /v1/* API (https://veritize.app). Content fact-checking with claim-level evidence.",
+  "keywords": [
+    "veritize",
+    "fact-check",
+    "claim-verification",
+    "ai-content-detection",
+    "compliance"
+  ],
+  "author": "RelayOne, Inc.",
+  "funding": "https://veritize.app",
+  "license": "FSL-1.1-Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./cloud": {
+      "types": "./dist/cloud.d.ts",
+      "import": "./dist/cloud.js"
+    }
+  },
+  "files": ["dist", "README.md", "CHANGELOG.md", "LICENSE"],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RelayOne/veritize-sdk.git"
+  },
+  "homepage": "https://github.com/RelayOne/veritize-sdk",
+  "bugs": { "url": "https://github.com/RelayOne/veritize-sdk/issues" },
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "typecheck:build": "tsc -p tsconfig.build.json --noEmit",
+    "prepare": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "npm run clean && npm run typecheck:build && npm run build",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "devDependencies": {
+    "typescript": "~5.5",
+    "vitest": "^2",
+    "openapi-typescript": "^7"
+  }
+}
