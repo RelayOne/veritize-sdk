@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.pack-manifest.json
+*.log
+.DS_Store
+coverage/

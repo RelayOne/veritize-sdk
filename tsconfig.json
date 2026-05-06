@@ -11,8 +11,8 @@
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "dist",
-    "rootDir": "src",
-    "types": ["vitest/globals"]
+    "rootDir": ".",
+    "types": ["vitest/globals", "node"]
   },
   "include": ["src/**/*", "tests/**/*"]
 }

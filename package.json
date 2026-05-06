@@ -25,7 +25,12 @@
       "import": "./dist/cloud.js"
     }
   },
-  "files": ["dist", "README.md", "CHANGELOG.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -36,8 +41,12 @@
     "url": "git+https://github.com/RelayOne/veritize-sdk.git"
   },
   "homepage": "https://github.com/RelayOne/veritize-sdk",
-  "bugs": { "url": "https://github.com/RelayOne/veritize-sdk/issues" },
-  "engines": { "node": ">=18" },
+  "bugs": {
+    "url": "https://github.com/RelayOne/veritize-sdk/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "rm -rf dist",
@@ -49,8 +58,9 @@
     "pack:dry": "npm pack --dry-run"
   },
   "devDependencies": {
+    "@types/node": "^22.19.17",
+    "openapi-typescript": "^7",
     "typescript": "~5.5",
-    "vitest": "^2",
-    "openapi-typescript": "^7"
+    "vitest": "^2"
   }
 }

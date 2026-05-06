@@ -1,24 +1,22 @@
 # @veritize/client
 
-Shared HTTP client and TypeScript DTOs for the public Veritize `/v1/*`
-API. Consumed by the three front-end workspaces — `veritize-cloud-web`,
-`veritize-local-gui`, and `veritize-extension` — so that the fetch
-wrapper and frozen DTO definitions live in exactly one place.
+TypeScript HTTP client and DTOs for the public Veritize `/v1/*` API.
 
-> **Rename note.** This package was formerly published as
-> `@verity/client`. The 60-day `@verity/client` re-export shim
-> elapsed 2026-06-22 (V6-4 cutover) and the `packages/client-ts-legacy/`
-> workspace has been removed. The final `@verity/client@0.2.1` tarball
-> remains on npm with a `deprecated` field pointing at this package;
-> new consumers MUST install `@veritize/client` directly.
+Veritize is content fact-checking with claim-level evidence — see <https://veritize.app>.
 
 ## Install
 
+While the npm scope is being claimed, install directly from this GitHub repo:
+
 ```sh
-pnpm add @veritize/client
-# or, inside the monorepo:
-# pnpm add "@veritize/client@workspace:*"
+npm install github:RelayOne/veritize-sdk
+# or pin to a tag:
+npm install github:RelayOne/veritize-sdk#v0.2.0
 ```
+
+The package builds itself on install via a `prepare` hook, so consumers get a ready-to-import `dist/` without running build steps.
+
+Once the npm scope is claimed, the same package will be available as `npm install @veritize/client` with provenance attestations.
 
 ## Usage
 
@@ -33,32 +31,27 @@ const res = await postScan(
 const status = await getStatus();
 ```
 
-Cloud-only admin / billing / integrations endpoints are isolated in a
-side-entry so local and extension bundles can tree-shake them out:
+Cloud-only admin / billing / integrations endpoints are isolated in a side-entry so local and extension bundles can tree-shake them out:
 
 ```ts
 import { getAdminCustomers, getBillingInfo } from "@veritize/client/cloud";
 ```
 
+## Get an API key
+
+Generate one at <https://app.veritize.app/account/api-keys>. The `apiKey` is sent as a `Bearer` header on every request.
+
 ## Design rules
 
-- **React-agnostic.** Zero React imports, no hooks, no `peerDependencies`
-  on `react`. A consumer that wants `useQuery` wrappers keeps them
-  consumer-side.
-- **Zero runtime dependencies.** Only native `fetch`, `Headers`, and
-  `URLSearchParams`.
-- **Hand-authored types today.** The `/v1/*` DTOs in `src/types/api.ts`
-  are kept in lockstep with `relayone/verity/internal/api/dto.go`.
-  The `tests/openapi-drift.test.ts` test compares the hand-authored
-  types against `docs/openapi.yaml` using `openapi-typescript` in-process
-  — when the OpenAPI spec changes, update `src/types/api.ts` first and
-  let the drift test confirm parity.
-- **No side effects.** `"sideEffects": false` in `package.json` so
-  bundlers can tree-shake unused wrappers (the cloud module especially).
+- **React-agnostic.** Zero React imports, no hooks, no `peerDependencies` on `react`. A consumer that wants `useQuery` wrappers keeps them consumer-side.
+- **Zero runtime dependencies.** Only native `fetch`, `Headers`, and `URLSearchParams`.
+- **Hand-authored types today.** The `/v1/*` DTOs in `src/types/api.ts` are kept in lockstep with the canonical OpenAPI spec at the source monorepo.
+- **No side effects.** `"sideEffects": false` in `package.json` so bundlers can tree-shake unused wrappers (the cloud module especially).
 
-See `specs/shared-ts-client.md` for the full design contract and
-`specs/research/raw/RT-P4-ts-client.md` for the underlying research.
+## Source
+
+The canonical source lives in the [Veritize monorepo](https://github.com/RelayOne/veritize/tree/main/relayone/veritize/packages/client-ts) at `relayone/veritize/packages/client-ts/`. This repo is a thin export of that package — releases are tagged here in lockstep with the monorepo source.
 
 ## License
 
-FSL-1.1-Apache-2.0. See `LICENSE`.
+FSL-1.1-Apache-2.0. See [LICENSE](LICENSE).
