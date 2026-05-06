@@ -6,17 +6,15 @@ Veritize is content fact-checking with claim-level evidence — see <https://ver
 
 ## Install
 
-While the npm scope is being claimed, install directly from this GitHub repo:
+Install directly from this GitHub repo:
 
 ```sh
 npm install github:RelayOne/veritize-sdk
-# or pin to a tag:
+# or pin to a tag (recommended):
 npm install github:RelayOne/veritize-sdk#v0.2.0
 ```
 
-The package builds itself on install via a `prepare` hook, so consumers get a ready-to-import `dist/` without running build steps.
-
-Once the npm scope is claimed, the same package will be available as `npm install @veritize/client` with provenance attestations.
+The package builds itself on install via a `prepare` hook, so consumers get a ready-to-import `dist/` without running build steps. The npm registry path is intentionally not part of this release.
 
 ## Usage
 
